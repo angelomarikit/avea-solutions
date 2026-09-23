@@ -1,0 +1,197 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-brand: #05577c;
+  --color-brand-accent: #028790;
+  --color-surface: #ffffff;
+  --color-surface-muted: #ebebe3;
+  --color-ink: #000000;
+
+  --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Bebas Neue', 'Montserrat', ui-sans-serif, sans-serif;
+
+  --animate-swoosh: swoosh 8s ease-in-out infinite;
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-soft: pulse-soft 4s ease-in-out infinite;
+}
+
+@keyframes swoosh {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateX(18px) translateY(-10px) rotate(2deg);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background: var(--color-surface-muted);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-brand-accent) 35%, white);
+    color: var(--color-brand);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+    letter-spacing: 0.04em;
+  }
+
+  .tracking-brand {
+    letter-spacing: 0.28em;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-grain {
+    position: relative;
+  }
+
+  .bg-grain::before {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.035;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .bg-grid-brand {
+    background-image:
+      linear-gradient(rgba(5, 87, 124, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(5, 87, 124, 0.045) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .link-draw {
+    position: relative;
+  }
+
+  .link-draw::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 1.5px;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: var(--color-brand-accent);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .link-draw:hover::after {
+    transform: scaleX(1);
+  }
+
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-shine::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 35%,
+      rgba(255, 255, 255, 0.28) 50%,
+      transparent 65%
+    );
+    background-size: 200% 100%;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .btn-shine:hover::after {
+    opacity: 1;
+    animation: shine 0.9s ease;
+  }
+
+  .marquee-track {
+    animation: var(--animate-marquee);
+  }
+
+  .animate-float {
+    animation: var(--animate-float);
+  }
+
+  .animate-pulse-soft {
+    animation: var(--animate-pulse-soft);
+  }
+}
