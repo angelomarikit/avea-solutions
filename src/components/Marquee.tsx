@@ -2,7 +2,6 @@ const items = [
   'Managed staffing',
   'Dedicated remote teams',
   'No HR hassle',
-  'Team Leader + Paralegal',
   'The Right People. The Right Fit.',
   'Professional practices',
   'Philippine professionals',
