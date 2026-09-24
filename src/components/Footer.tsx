@@ -18,7 +18,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-16">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
           <div className="max-w-sm">
-            <Logo imgClassName="h-20 w-auto sm:h-24" />
+            <Logo variant="white" imgClassName="h-20 w-auto sm:h-24" />
             <p className="mt-5 text-sm leading-relaxed text-white/65">
               Managed remote staffing for law firms and professional practices.
               Your team, without the HR hassle.
