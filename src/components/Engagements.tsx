@@ -7,10 +7,10 @@ const engagements = [
   {
     name: 'Foundation desk',
     summary:
-      'A dedicated Assistant or Paralegal embedded in your workflows — ideal for sole practitioners and lean practices adding reliable capacity.',
+      'A dedicated Assistant or Paralegal embedded in your workflows, ideal for sole practitioners and lean practices adding reliable capacity.',
     points: [
-      'Role designed around your matters & admin load',
-      'Avea-managed recruitment & employment',
+      'Role designed around your matters and admin load',
+      'Avea managed recruitment and employment',
       'Ongoing coordination and support',
       'Predictable subscription staffing',
     ],
@@ -18,23 +18,23 @@ const engagements = [
   {
     name: 'Practice pod',
     summary:
-      'Assistant/Paralegal plus Team Leader oversight — systems fluency, training support, and an extra layer of quality control.',
+      'Assistant or Paralegal plus Team Leader oversight, systems fluency, training support, and an extra layer of quality control.',
     points: [
-      'Team Leader learns your tools & standards',
-      'QC and accountability built in',
+      'Team Leader learns your tools and standards',
+      'Quality control and accountability built in',
       'Scales with recurring operational work',
-      'Best for growing small-to-mid firms',
+      'Best for growing small to mid sized firms',
     ],
     featured: true,
   },
   {
     name: 'Custom structure',
     summary:
-      'Multi-role remote support designed around intake, research, billing, compliance, or firm-specific operations — built with you, not forced into a box.',
+      'Multi role remote support designed around intake, research, billing, compliance, or firm specific operations, built with you, not forced into a box.',
     points: [
-      'Flexible headcount & role mix',
-      'Human expertise + modern productivity tools',
-      'Long-term partnership model',
+      'Flexible headcount and role mix',
+      'Human expertise plus modern productivity tools',
+      'Long term partnership model',
       'Expand beyond legal as your needs evolve',
     ],
   },
@@ -54,7 +54,7 @@ export function Engagements() {
             Flexible staffing. Subscription simplicity.
           </h2>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-brand/70">
-            Choose an arrangement shaped by how your practice works — Avea
+            Choose an arrangement shaped by how your practice works. Avea
             handles the staffing infrastructure so capacity stays predictable.
           </p>
         </Reveal>

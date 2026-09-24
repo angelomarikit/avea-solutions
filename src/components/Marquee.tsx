@@ -4,7 +4,7 @@ const items = [
   'No HR hassle',
   'Team Leader + Paralegal',
   'The Right People. The Right Fit.',
-  'Australian practices',
+  'Professional practices',
   'Philippine professionals',
   'Subscription simplicity',
 ]

@@ -6,36 +6,36 @@ import { MagneticButton } from './MagneticButton'
 
 const faqs = [
   {
-    q: 'Is Avea a virtual assistant marketplace?',
-    a: 'No. Avea is a managed staffing partner. We design and run a dedicated remote staffing structure around your practice — handling recruitment, employment administration, support, and coordination — rather than matching you with random freelancers.',
+    q: 'How is Avea different from hiring freelancers?',
+    a: 'Avea is a managed staffing partner. We design and run a dedicated remote staffing structure around your practice, handling recruitment, employment administration, support, and coordination, rather than matching you with random freelancers.',
   },
   {
     q: 'Who is Avea built for?',
-    a: 'Australian law firms, sole practitioners, and small-to-mid-sized professional practices that need extra capacity without the cost, complexity, or HR burden of hiring locally. Over time, the model can extend to other professional-service industries.',
+    a: 'Law firms, sole practitioners, and small to mid sized professional practices that need extra capacity without the cost, complexity, or HR burden of hiring locally. Over time, the model can extend to other professional service industries.',
   },
   {
     q: 'What roles can Avea provide?',
-    a: 'Trained virtual assistants, paralegals, administrative professionals, and — where appropriate — Team Leaders who learn your systems, help train the team, and add quality control and accountability.',
+    a: 'Trained assistants, paralegals, administrative professionals, and where appropriate, Team Leaders who learn your systems, help train the team, and add quality control and accountability.',
   },
   {
-    q: 'How does the Team Leader + Assistant model work?',
+    q: 'How does the Team Leader and Assistant model work?',
     a: 'Depending on your needs, your team may include an Assistant or Paralegal supported by a Team Leader. The Team Leader builds fluency in your tools and processes, supports training, and provides an extra layer of oversight so work stays consistent.',
   },
   {
     q: 'What does Avea handle versus what we manage?',
-    a: 'Avea takes care of staffing-side responsibilities: recruitment, onboarding, employment administration, benefits, team support, and coordination. You direct the day-to-day work of your dedicated team as an extension of your practice.',
+    a: 'Avea takes care of staffing side responsibilities: recruitment, onboarding, employment administration, benefits, team support, and coordination. You direct the day to day work of your dedicated team as an extension of your practice.',
   },
   {
     q: 'Are packages fixed, or can we customise?',
-    a: 'Engagements are flexible and built around your actual workloads — from a single Foundation desk to a Practice pod or a fully custom structure. Subscription staffing keeps capacity predictable without forcing you into rigid marketplace packages.',
+    a: 'Engagements are flexible and built around your actual workloads, from a single Foundation desk to a Practice pod or a fully custom structure. Subscription staffing keeps capacity predictable without forcing you into rigid packages.',
   },
   {
     q: 'Where is the team based, and how do they work with us?',
-    a: 'Avea provides trained Philippine-based professionals who work as a dedicated remote extension of your firm — learning your systems and supporting recurring admin, legal support, research, intake, billing, compliance, and other operational work that can be done remotely.',
+    a: 'Avea provides trained Philippine based professionals who work as a dedicated remote extension of your firm, learning your systems and supporting recurring admin, legal support, research, intake, billing, compliance, and other operational work that can be done remotely.',
   },
   {
     q: 'Do you use AI and modern productivity tools?',
-    a: 'Yes, where it helps. The goal is not simply more people — it is a more efficient operating model that combines capable human professionals with technology, applied thoughtfully to your workflows.',
+    a: 'Yes, where it helps. The goal is not simply more people. It is a more efficient operating model that combines capable human professionals with technology, applied thoughtfully to your workflows.',
   },
 ]
 
@@ -57,15 +57,15 @@ export function FAQ() {
             </h2>
             <p className="mt-5 max-w-md text-base leading-relaxed text-brand/70">
               Straight answers about how Avea’s managed staffing model works for
-              Australian practices. Don’t see your question? Reach out through
+              professional practices. Don’t see your question? Reach out through
               the contact form and we’ll help personally.
             </p>
 
             <div className="mt-8 rounded-2xl border border-brand/10 bg-surface-muted p-6">
               <p className="font-semibold text-brand">Still need clarity?</p>
               <p className="mt-2 text-sm leading-relaxed text-brand/65">
-                If your question isn’t covered here — pricing for a custom
-                structure, timelines, or a specific practice need — send us a
+                If your question isn’t covered here, including pricing for a custom
+                structure, timelines, or a specific practice need, send us a
                 short note and we’ll follow up.
               </p>
               <div className="mt-5">

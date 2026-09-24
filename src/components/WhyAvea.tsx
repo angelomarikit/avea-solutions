@@ -6,23 +6,23 @@ import { MagneticButton } from './MagneticButton'
 const reasons = [
   {
     title: 'No HR hassle',
-    body: 'Recruitment, onboarding, employment admin, benefits, and team support sit with Avea — you get the output of a dedicated team.',
+    body: 'Recruitment, onboarding, employment admin, benefits, and team support sit with Avea. You get the output of a dedicated team.',
   },
   {
     title: 'Dedicated, not random',
-    body: 'Long-term remote professionals who learn your practice, not rotating freelancers from a marketplace feed.',
+    body: 'Long term remote professionals who learn your practice, not rotating freelancers from a platform feed.',
   },
   {
     title: 'Accountability built in',
     body: 'Where appropriate, a Team Leader layer adds systems fluency, training support, and quality control.',
   },
   {
-    title: 'Humans + modern tools',
+    title: 'Humans plus modern tools',
     body: 'Capable professionals paired with AI and productivity tooling where it meaningfully improves how work gets done.',
   },
   {
     title: 'Partnership mindset',
-    body: 'Subscription-based staffing designed to scale with you — a quiet extension of your business, not a transactional vendor.',
+    body: 'Subscription based staffing designed to scale with you, a quiet extension of your business, not a transactional vendor.',
   },
 ]
 

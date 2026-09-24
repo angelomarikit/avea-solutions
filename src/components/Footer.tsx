@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Logo } from './Logo'
 import { IconFacebook, IconInstagram, IconPhoneChat } from './Icons'
+import { CONTACT_EMAIL, MAILTO_URL, WHATSAPP_DISPLAY, WHATSAPP_URL } from '../lib/contact'
 
 const nav = [
   { href: '#about', label: 'About' },
@@ -19,8 +20,8 @@ export function Footer() {
           <div className="max-w-sm">
             <Logo variant="white" showTagline markClassName="h-11 w-11" />
             <p className="mt-5 text-sm leading-relaxed text-white/65">
-              Managed remote staffing for Australian law firms and professional
-              practices — your team, without the HR hassle.
+              Managed remote staffing for law firms and professional practices.
+              Your team, without the HR hassle.
             </p>
             <div className="mt-6 flex gap-3">
               {(
@@ -36,7 +37,7 @@ export function Footer() {
                     Icon: IconInstagram,
                   },
                   {
-                    href: 'mailto:hello@aveasolutions.com',
+                    href: MAILTO_URL,
                     label: 'Email Avea',
                     Icon: IconPhoneChat,
                   },
@@ -81,10 +82,18 @@ export function Footer() {
                 Contact
               </p>
               <a
-                href="mailto:hello@aveasolutions.com"
+                href={MAILTO_URL}
                 className="mt-4 block text-sm text-white/75 transition hover:text-white"
               >
-                hello@aveasolutions.com
+                {CONTACT_EMAIL}
+              </a>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-2 block text-sm text-white/75 transition hover:text-white"
+              >
+                WhatsApp {WHATSAPP_DISPLAY}
               </a>
               <a
                 href="#contact"

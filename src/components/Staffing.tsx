@@ -4,9 +4,9 @@ import { IconCheck } from './Icons'
 
 const roles = [
   {
-    title: 'Assistant / Paralegal',
+    title: 'Assistant or Paralegal',
     detail:
-      'Document preparation, research, client communication support, intake, billing admin, compliance tasks, and day-to-day legal operations.',
+      'Document preparation, research, client communication support, intake, billing admin, compliance tasks, and day to day legal operations.',
   },
   {
     title: 'Administrative professionals',
@@ -23,15 +23,15 @@ const roles = [
 const steps = [
   {
     title: 'Understand the practice',
-    body: 'We map your recurring workloads and the structure that will actually help — not a rigid off-the-shelf package.',
+    body: 'We map your recurring workloads and the structure that will actually help, not a rigid off the shelf package.',
   },
   {
     title: 'Build the team',
     body: 'Avea handles recruitment, onboarding, and employment administration so you get dedicated people, not a revolving door.',
   },
   {
-    title: 'Coordinate & support',
-    body: 'Ongoing team support, coordination, and — where appropriate — AI and productivity tools to sharpen how work gets done.',
+    title: 'Coordinate and support',
+    body: 'Ongoing team support, coordination, and where appropriate, AI and productivity tools to sharpen how work gets done.',
   },
   {
     title: 'You stay focused',
@@ -59,8 +59,8 @@ export function Staffing() {
               </h2>
               <p className="mt-5 max-w-lg text-base leading-relaxed text-brand/70">
                 Flexible arrangements based on what your practice actually
-                requires — subscription-based simplicity with Avea owning the
-                staffing-side responsibilities.
+                requires, with subscription based simplicity and Avea owning the
+                staffing side responsibilities.
               </p>
             </Reveal>
 

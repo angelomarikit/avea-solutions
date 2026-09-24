@@ -4,15 +4,15 @@ import { Reveal } from './Reveal'
 const pillars = [
   {
     title: 'Who we are',
-    body: 'Avea Solutions is a managed staffing and remote workforce partner. We help Australian law firms and professional practices build reliable teams in the Philippines — not by placing freelancers, but by designing and running the staffing structure around your practice.',
+    body: 'Avea Solutions is a managed staffing and remote workforce partner. We help law firms and professional practices build reliable teams in the Philippines by designing and running the staffing structure around your practice.',
   },
   {
     title: 'What we do',
-    body: 'We recruit, onboard, employ, support, and coordinate dedicated virtual assistants, paralegals, administrative professionals, and team leaders who learn your systems and operate as part of your firm.',
+    body: 'We recruit, onboard, and coordinate dedicated assistants, paralegals, administrative professionals, and team leaders who learn your systems and operate as part of your firm.',
   },
   {
     title: 'Our promise',
-    body: 'Reliable. Skilled. Accountable. A long-term staffing partnership so you can focus on practising law, serving clients, and growing — while we quietly handle the people infrastructure.',
+    body: 'Reliable. Skilled. Accountable. A long term staffing partnership so you can focus on practising law, serving clients, and growing while we quietly handle the people infrastructure.',
   },
 ]
 
@@ -27,13 +27,11 @@ export function About() {
             About Avea
           </p>
           <h2 className="mt-3 max-w-2xl font-display text-5xl text-brand sm:text-6xl">
-            Managed staffing.
-            <br />
-            Not a VA marketplace.
+            Managed staffing built around your practice.
           </h2>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-brand/70 sm:text-lg">
             Clients choose Avea when they need capacity without the cost,
-            complexity, or HR burden of hiring locally — and without the
+            complexity, or HR burden of hiring locally, and without the
             unpredictability of freelancer platforms.
           </p>
         </Reveal>

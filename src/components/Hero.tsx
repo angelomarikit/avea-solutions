@@ -90,7 +90,7 @@ export function Hero() {
             </p>
             <p className="mt-1 font-display text-2xl text-brand">Dedicated teams</p>
             <p className="mt-1 max-w-[12rem] text-xs leading-relaxed text-brand/65">
-              Managed staffing — not freelance placement.
+              Managed staffing, not freelance placement.
             </p>
           </div>
         </motion.div>
@@ -150,9 +150,8 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.45, ease: lineEase }}
             className="mt-6 max-w-md text-base leading-relaxed text-brand/75 sm:text-lg"
           >
-            Managed remote staffing for Australian law firms and professional
-            practices — dedicated Philippine-based teams that work as an
-            extension of yours.
+            Managed remote staffing for law firms and professional practices.
+            Dedicated Philippine based teams that work as an extension of yours.
           </motion.p>
 
           <motion.div

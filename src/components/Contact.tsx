@@ -2,8 +2,15 @@ import { useState } from 'react'
 import type { ChangeEvent, FormEvent } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Reveal } from './Reveal'
-import { IconArrow } from './Icons'
+import { IconArrow, IconPhoneChat } from './Icons'
 import { MagneticButton } from './MagneticButton'
+import {
+  CONTACT_EMAIL,
+  FORM_SUBMIT_URL,
+  MAILTO_URL,
+  WHATSAPP_DISPLAY,
+  WHATSAPP_URL,
+} from '../lib/contact'
 
 type FormState = {
   name: string
@@ -21,6 +28,13 @@ const initial: FormState = {
   phone: '',
   need: '',
   message: '',
+}
+
+const needLabels: Record<string, string> = {
+  foundation: 'Foundation desk (single role)',
+  pod: 'Practice pod (with Team Leader)',
+  custom: 'Custom structure',
+  explore: 'Not sure yet, explore options',
 }
 
 type Errors = Partial<Record<keyof FormState, string>>
@@ -43,6 +57,7 @@ export function Contact() {
   const [values, setValues] = useState<FormState>(initial)
   const [errors, setErrors] = useState<Errors>({})
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle')
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   function onChange(
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
@@ -50,6 +65,7 @@ export function Contact() {
     const { name, value } = e.target
     setValues((prev) => ({ ...prev, [name]: value }))
     setErrors((prev) => ({ ...prev, [name]: undefined }))
+    setSubmitError(null)
   }
 
   async function onSubmit(e: FormEvent) {
@@ -59,10 +75,45 @@ export function Contact() {
     if (Object.keys(nextErrors).length > 0) return
 
     setStatus('submitting')
-    // Stub: replace with Formspree / API endpoint when available
-    await new Promise((r) => setTimeout(r, 700))
-    setStatus('success')
-    setValues(initial)
+    setSubmitError(null)
+
+    try {
+      const res = await fetch(FORM_SUBMIT_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: values.name.trim(),
+          firm: values.firm.trim(),
+          email: values.email.trim(),
+          phone: values.phone.trim() || 'Not provided',
+          staffing_need: needLabels[values.need] || values.need,
+          message: values.message.trim(),
+          _subject: `Avea consultation: ${values.firm.trim()}`,
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      })
+
+      const data = (await res.json().catch(() => null)) as {
+        success?: string | boolean
+        message?: string
+      } | null
+
+      if (!res.ok || data?.success === 'false' || data?.success === false) {
+        throw new Error(data?.message || 'Unable to send your message right now.')
+      }
+
+      setStatus('success')
+      setValues(initial)
+    } catch {
+      setStatus('idle')
+      setSubmitError(
+        `We couldn’t send that just now. Email us at ${CONTACT_EMAIL} or message us on WhatsApp.`,
+      )
+    }
   }
 
   return (
@@ -83,12 +134,39 @@ export function Contact() {
             Tell us about your practice and the capacity you need. We’ll follow
             up with a clear path to a managed staffing arrangement.
           </p>
-          <a
-            href="mailto:hello@aveasolutions.com"
-            className="link-draw mt-8 inline-flex text-sm font-semibold text-brand"
-          >
-            hello@aveasolutions.com
-          </a>
+
+          <div className="mt-8 space-y-4">
+            <a
+              href={MAILTO_URL}
+              className="link-draw group flex items-center gap-3 text-sm font-semibold text-brand"
+            >
+              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-brand/15 text-brand-accent transition group-hover:border-brand-accent/40">
+                <IconPhoneChat className="h-5 w-5" />
+              </span>
+              <span>
+                <span className="block text-[0.65rem] font-medium tracking-brand text-brand/50 uppercase">
+                  Email
+                </span>
+                {CONTACT_EMAIL}
+              </span>
+            </a>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="link-draw group flex items-center gap-3 text-sm font-semibold text-brand"
+            >
+              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-brand/15 text-brand-accent transition group-hover:border-brand-accent/40">
+                <WhatsAppIcon className="h-5 w-5" />
+              </span>
+              <span>
+                <span className="block text-[0.65rem] font-medium tracking-brand text-brand/50 uppercase">
+                  WhatsApp
+                </span>
+                {WHATSAPP_DISPLAY}
+              </span>
+            </a>
+          </div>
         </Reveal>
 
         <Reveal delay={0.1}>
@@ -108,8 +186,8 @@ export function Contact() {
                 >
                   <p className="font-display text-4xl text-brand">Thank you.</p>
                   <p className="mt-3 max-w-sm text-sm leading-relaxed text-brand/70">
-                    Your consultation request has been received. We’ll be in
-                    touch shortly.
+                    Your consultation request has been sent to {CONTACT_EMAIL}.
+                    We’ll be in touch shortly.
                   </p>
                   <button
                     type="button"
@@ -181,7 +259,7 @@ export function Contact() {
                       <option value="foundation">Foundation desk (single role)</option>
                       <option value="pod">Practice pod (with Team Leader)</option>
                       <option value="custom">Custom structure</option>
-                      <option value="explore">Not sure yet — explore options</option>
+                      <option value="explore">Not sure yet, explore options</option>
                     </select>
                     {errors.need && (
                       <p className="mt-1 text-xs text-red-700">{errors.need}</p>
@@ -207,6 +285,9 @@ export function Contact() {
                       <p className="mt-1 text-xs text-red-700">{errors.message}</p>
                     )}
                   </div>
+                  {submitError && (
+                    <p className="sm:col-span-2 text-sm text-red-700">{submitError}</p>
+                  )}
                   <div className="sm:col-span-2 pt-2">
                     <MagneticButton
                       type="submit"
@@ -224,6 +305,23 @@ export function Contact() {
         </Reveal>
       </div>
     </section>
+  )
+}
+
+function WhatsAppIcon({ className = 'h-5 w-5' }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M12 3.5a8.5 8.5 0 0 0-7.36 12.76L3.8 20.2l3.99-.84A8.5 8.5 0 1 0 12 3.5Z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M9.2 9.4c.2-.4.4-.45.7-.45h.5c.18 0 .35.08.45.3l.7 1.55c.1.22.05.45-.12.6l-.4.38c-.12.12-.15.28-.08.43.35.75 1.1 1.5 1.9 1.95.18.1.4.06.55-.08l.5-.5c.16-.16.4-.2.6-.1l1.55.7c.22.1.35.3.3.52v.55c0 .28-.1.5-.4.7-.55.35-1.45.55-2.35.2-1.55-.6-3.05-2.05-3.8-3.7-.4-.9-.4-1.8.05-2.45Z"
+        fill="currentColor"
+      />
+    </svg>
   )
 }
 

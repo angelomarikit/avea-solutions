@@ -32,19 +32,20 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-[100] transition-all duration-500 ${
         scrolled || open
-          ? 'border-b border-brand/10 bg-surface-muted/90 shadow-[0_10px_40px_-24px_rgba(5,87,124,0.35)] backdrop-blur-md'
+          ? 'border-b border-brand/10 bg-surface-muted shadow-[0_10px_40px_-24px_rgba(5,87,124,0.35)]'
           : 'bg-transparent'
       }`}
     >
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:h-[4.5rem] sm:px-8">
+      <nav className="relative z-[110] mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:h-[4.5rem] sm:px-8">
         <motion.a
           href="#top"
-          className="relative z-10"
+          className="relative"
           aria-label="Avea Solutions home"
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.98 }}
+          onClick={() => setOpen(false)}
         >
           <Logo markClassName="h-9 w-9 sm:h-10 sm:w-10" />
         </motion.a>
@@ -73,7 +74,7 @@ export function Navbar() {
 
         <button
           type="button"
-          className="relative z-10 flex h-10 w-10 items-center justify-center rounded-md text-brand transition hover:bg-brand/5 lg:hidden"
+          className="relative flex h-10 w-10 items-center justify-center rounded-md text-brand transition hover:bg-brand/5 lg:hidden"
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
@@ -94,38 +95,41 @@ export function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 top-16 bg-surface-muted lg:hidden"
+            className="fixed inset-0 z-[105] flex flex-col bg-[#EBEBE3] lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
           >
-            <ul className="flex flex-col gap-1 px-6 py-8">
-              {links.map((link, i) => (
-                <motion.li
-                  key={link.href}
-                  initial={{ opacity: 0, x: -12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.05 * i }}
-                >
-                  <a
-                    href={link.href}
-                    className="block py-3 font-display text-3xl text-brand transition hover:text-brand-accent"
-                    onClick={() => setOpen(false)}
+            {/* Solid cover so page content never shows through */}
+            <div className="pointer-events-none absolute inset-0 bg-[#EBEBE3]" aria-hidden />
+            <div className="relative z-10 flex h-full flex-col overflow-y-auto px-6 pb-10 pt-24">
+              <ul className="flex flex-col gap-1">
+                {links.map((link, i) => (
+                  <motion.li
+                    key={link.href}
+                    initial={{ opacity: 0, x: -12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.04 * i }}
                   >
-                    {link.label}
-                  </a>
-                </motion.li>
-              ))}
-              <li className="pt-6">
-                <a
-                  href="#contact"
-                  className="btn-shine inline-flex w-full items-center justify-center rounded-md bg-brand-accent px-5 py-3.5 text-sm font-semibold text-white"
-                  onClick={() => setOpen(false)}
-                >
-                  Get Started
-                </a>
-              </li>
-            </ul>
+                    <a
+                      href={link.href}
+                      className="block py-3 font-display text-3xl text-brand transition hover:text-brand-accent"
+                      onClick={() => setOpen(false)}
+                    >
+                      {link.label}
+                    </a>
+                  </motion.li>
+                ))}
+              </ul>
+              <a
+                href="#contact"
+                className="btn-shine mt-8 inline-flex w-full items-center justify-center rounded-md bg-brand-accent px-5 py-3.5 text-sm font-semibold text-white"
+                onClick={() => setOpen(false)}
+              >
+                Get Started
+              </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
