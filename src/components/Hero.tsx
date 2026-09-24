@@ -102,33 +102,16 @@ export function Hero() {
             initial={reduce ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: lineEase }}
-            className="mb-8 flex items-center gap-4"
+            className="mb-8"
           >
             <motion.div
-              className={reduce ? '' : 'animate-float'}
-              whileHover={reduce ? undefined : { rotate: -6, scale: 1.08 }}
+              className={`inline-block ${reduce ? '' : 'animate-float'}`}
+              whileHover={reduce ? undefined : { scale: 1.03 }}
               transition={{ type: 'spring', stiffness: 260, damping: 16 }}
             >
-              <LogoMark className="h-14 w-14 sm:h-16 sm:w-16" />
+              <LogoMark className="h-28 w-auto sm:h-36 md:h-40" />
             </motion.div>
-            <div>
-              <p className="font-sans text-3xl font-semibold tracking-tight text-brand lowercase sm:text-4xl">
-                avea
-              </p>
-              <p className="text-xs font-medium tracking-brand text-brand uppercase">
-                Solutions
-              </p>
-            </div>
           </motion.div>
-
-          <motion.p
-            initial={reduce ? false : { opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.08, ease: lineEase }}
-            className="mb-5 text-[0.7rem] font-medium tracking-brand text-brand-accent uppercase"
-          >
-            The Right People. The Right Fit.
-          </motion.p>
 
           <h1 className="font-display text-[3.25rem] leading-[0.95] text-brand sm:text-6xl md:text-7xl lg:text-[5.25rem]">
             {['Your team,', 'without the', 'HR hassle.'].map((line, i) => (

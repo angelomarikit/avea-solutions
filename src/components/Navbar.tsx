@@ -47,7 +47,7 @@ export function Navbar() {
           whileTap={{ scale: 0.98 }}
           onClick={() => setOpen(false)}
         >
-          <Logo markClassName="h-9 w-9 sm:h-10 sm:w-10" />
+          <Logo imgClassName="h-10 w-auto sm:h-11" />
         </motion.a>
 
         <ul className="hidden items-center gap-8 lg:flex">
